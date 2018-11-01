@@ -13,94 +13,96 @@
     </head>
     <body>
 
+
       <h1>Tic Tac Toe</h1>
+      <div class="buttons">
+        <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#modalSignin"> Sign In or Sign Up!</button>
 
-      <button type="button" class="btn btn-primary" data-toggle="modal"
-      data-target="#modalSignin"> Sign In or Sign Up!</button>
+        <div class="modal fade" id="modalSignin">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalSigninLabel">Sign In/Sign Up</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <form id="sign-up" class="border">
+                  <fieldset>
+                    <legend>Sign Up</legend>
+                    <input type="text" name="credentials[email]" placeholder="Email">
+                    <input type="password" name="credentials[password]" placeholder="Password">
+                    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                    <input type="submit" value="Sign Up!">
+                  </fieldset>
+                </form>
 
-      <div class="modal fade" id="modalSignin">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalSigninLabel">Sign In/Sign Up</h5>
-              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-            </div>
-            <div class="modal-body">
-              <form id="sign-up" class="border">
-                <fieldset>
-                  <legend>Sign Up</legend>
-                  <input type="text" name="credentials[email]" placeholder="Email">
-                  <input type="password" name="credentials[password]" placeholder="Password">
-                  <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-                  <input type="submit" value="Sign Up!">
-                </fieldset>
-              </form>
-
-              <form id="sign-in" class="border">
-                <fieldset>
-                  <legend>Sign In</legend>
-                  <input type="text" name="credentials[password]" placeholder="Email">
-                  <input type="password" name="credentials[password]" placeholder="Password">
-                  <input type="submit" value="Sign In!">
-                </fieldset>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <button type="button" class="btn btn-primary" data-toggle="modal"
-      data-target="#modalChangePassword">Change Password</button>
-
-      <div class="modal fade" id="modalChangePassword">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalChangePasswordLabel">Change Password</h5>
-              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-            </div>
-            <div class="modal-body">
-              <form id="change-password" class="border">
-                <fieldset>
-                  <legend>Change password!</legend>
-                  <input type="password" name="passwords[old]" placeholder="Old password">
-                  <input type="password" name="passwords[new]" placeholder="New password">
-                  <input type="password" name="credentials[password_confirmation]" placeholder="Confirm New Password">
-                  <input type="submit" value="Change password!">
-                </fieldset>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+                <form id="sign-in" class="border">
+                  <fieldset>
+                    <legend>Sign In</legend>
+                    <input type="text" name="credentials[password]" placeholder="Email">
+                    <input type="password" name="credentials[password]" placeholder="Password">
+                    <input type="submit" value="Sign In!">
+                  </fieldset>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <button type="button" class="btn btn-primary" data-toggle="modal"
-      data-target="#modalSignout">Sign Out</button>
 
-      <div class="modal fade" id="modalSignout">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalSignoutLabel">Sign Out</h5>
-              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#modalChangePassword">Change Password</button>
+
+        <div class="modal fade" id="modalChangePassword">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalChangePasswordLabel">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <form id="change-password" class="border">
+                  <fieldset>
+                    <legend>Change password!</legend>
+                    <input type="password" name="passwords[old]" placeholder="Old password">
+                    <input type="password" name="passwords[new]" placeholder="New password">
+                    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm New Password">
+                    <input type="submit" value="Change password!">
+                  </fieldset>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+              </div>
             </div>
-            <div class="modal-body">
-              <form id="sign-out" class="border">
-                <fieldset>
-                  <legend>Sign Out</legend>
-                  <input type="submit" value="Sign Out!">
-                </fieldset>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#modalSignout">Sign Out</button>
+
+        <div class="modal fade" id="modalSignout">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalSignoutLabel">Sign Out</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <form id="sign-out" class="border">
+                  <fieldset>
+                    <legend>Sign Out</legend>
+                    <input type="submit" value="Sign Out!">
+                  </fieldset>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+              </div>
             </div>
           </div>
         </div>
