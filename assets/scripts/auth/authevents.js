@@ -1,40 +1,40 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
-const api = require('./api.js')
-const ui = require('./ui.js')
+const authApi = require('./authapi.js')
+const authUi = require('./authui.js')
 
 const onSignUp = event => {
   event.preventDefault()
   console.log(event)
   const data = getFormFields(event.target)
-  api.signUp(data)
-    .then(ui.signUpSuccess)
-    .catch(ui.signUpFailure)
+  authApi.signUp(data)
+    .then(authUi.signUpSuccess)
+    .catch(authUi.signUpFailure)
 }
 
 const onSignIn = event => {
   event.preventDefault()
   console.log(event)
   const data = getFormFields(event.target)
-  api.signIn(data)
-    .then(ui.signInSuccess)
-    .catch(ui.signInFailure)
+  authApi.signIn(data)
+    .then(authUi.signInSuccess)
+    .catch(authUi.signInFailure)
 }
 
 const onChangePassword = event => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  api.changePassword(data)
-    .then(ui.changePasswordSuccess)
-    .catch(ui.changePasswordFailure)
+  authApi.changePassword(data)
+    .then(authUi.changePasswordSuccess)
+    .catch(authUi.changePasswordFailure)
 }
 
 const onSignOut = event => {
   event.preventDefault()
   console.log(event)
   const data = getFormFields(event.target)
-  api.signOut(data)
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
+  authApi.signOut(data)
+    .then(authUi.signOutSuccess)
+    .catch(authUi.signOutFailure)
 }
 
 module.exports = {

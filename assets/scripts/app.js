@@ -2,7 +2,7 @@
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
-const authEvent = require('./auth./authevents')
+const authEvents = require('./auth./authevents')
 const events = require('./events')
 
 // use require without a reference to ensure a file is bundled
@@ -22,6 +22,7 @@ const player = function (id, email) {
   this.email = email
 }
 
+//create winning combos array
 const winCombos = [
   [0, 1, 2],
   [3, 4, 5],
