@@ -1,15 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
 
 h1 {
-  text-align: center;
   font-size: 50pt;
   font-weight: bold;
+  text-align: center;
 }
 
 td {
   border: 20px solid grey;
-  font-size: 40pt;
+  font-size: 50pt;
+  font-weight: bold;
   height: 200px;
+  text-align: center;
   width: 200px;
 }
 
@@ -38,4 +40,5 @@ table tr td:last-child {
 .buttons {
   display: flex;
   justify-content: center;
+  margin: 10px;
 }
