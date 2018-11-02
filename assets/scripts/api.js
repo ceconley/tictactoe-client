@@ -1,7 +1,7 @@
 const baseUrl = 'http://tic-tac-toe.wdibos.com'
 
 const send0ClickToApi = function () {
-  $.ajax({
+  return $.ajax({
     url: baseUrl + '/games',
     method: 'PATCH'
   })

@@ -9,17 +9,17 @@ const events = require('./events')
 // require('./example')
 
 // create game contructor consisting of id, cells(array), over(boolean), players
-// const game = function (id, cells, over, player_x, player_o) {
-// this.id = id
-// this.cells = cells
-// this.over = over
-// this.player_x = player_x
-// this.player_o = player_o
+// const Game = function (id, cells, over, player_x, player_o) {
+//   this.id = id
+//   this.cells = cells
+//   this.over = over
+//   this.player_x = player_x
+//   this.player_o = player_o
 // }
 // create players constructor consisting of id and email
-// const player = function (id, email) {
-// this.id = id
-// this.email = email
+// const Player = function (id, email) {
+//   this.id = id
+//   this.email = email
 // }
 
 // reset the board
