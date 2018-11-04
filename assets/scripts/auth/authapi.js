@@ -1,18 +1,24 @@
 
-const config = require('../config.js')
+// const config = require('../config.js')
 const store = require('../store.js')
 
-const signUp = data => {
-  return $.ajax({
-    url: config.apiUrl + '/sign-up',
-    method: 'POST',
-    data
-  })
-}
+const baseUrl = 'http://tic-tac-toe.wdibos.com'
+
+// const signUp = data => {
+//   return $.ajax({
+//     url: cbaseUrl + '/sign-up',
+//     method: 'POST',
+//     data:  "credentials": {
+//     "email": "an@example.email",
+//     "password": "an example password",
+//     "password_confirmation": "an example password"
+//   }
+// }
+//   })
 
 const signIn = data => {
   return $.ajax({
-    url: config.apiUrl + '/sign-in',
+    url: baseUrl + '/sign-in',
     method: 'POST',
     data
   })
@@ -20,7 +26,7 @@ const signIn = data => {
 
 const changePassword = data => {
   return $.ajax({
-    url: config.apiUrl + '/change-password',
+    url: baseUrl + '/change-password',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -31,7 +37,7 @@ const changePassword = data => {
 
 const signOut = data => {
   return $.ajax({
-    url: config.apiUrl + '/sign-out',
+    url: baseUrl + '/sign-out',
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -41,7 +47,7 @@ const signOut = data => {
 }
 
 module.exports = {
-  signUp,
+  // signUp,
   signIn,
   changePassword,
   signOut

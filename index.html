@@ -22,7 +22,6 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="modalSigninLabel">Sign In/Sign Up</h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
               </div>
               <div class="modal-body">
                 <form id="sign-up" class="border">
@@ -60,7 +59,6 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="modalChangePasswordLabel">Change Password</h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
               </div>
               <div class="modal-body">
                 <form id="change-password" class="border">
@@ -88,7 +86,6 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="modalSignoutLabel">Sign Out</h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
               </div>
               <div class="modal-body">
                 <form id="sign-out" class="border">
@@ -106,25 +103,42 @@
         </div>
       </div>
       <h5> Player X clicks to start </h5>
-        <form>
-          <table>
-            <tr>
-              <td id='0'></td>
-              <td id='1'></td>
-              <td id='2'></td>
-            </tr>
-            <tr>
-              <td id='3'></td>
-              <td id='4'></td>
-              <td id='5'></td>
-            </tr>
-            <tr>
-              <td id='6'></td>
-              <td id='7'></td>
-              <td id='8'></td>
-            </tr>
-          </table>
-          <input type="reset" value="Reset">
-        </form>
+        <table>
+          <tr>
+            <td class="cells 0" id='0'></td>
+            <td class="cells 1" id='1'></td>
+            <td class="cells 2" id='2'></td>
+          </tr>
+          <tr>
+            <td class="cells 3" id='3'></td>
+            <td class="cells 4" id='4'></td>
+            <td class="cells 5" id='5'></td>
+          </tr>
+          <tr>
+            <td class="cells 6" id='6'></td>
+            <td class="cells 7" id='7'></td>
+            <td class="cells 8" id='8'></td>
+          </tr>
+        </table>
+        <input class="reset" type="reset" value="Reset">
+        <!-- <div class="modal fade" id="gameOver">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalGameOverLabel">Game Over</h5>
+              </div>
+              <div class="modal-body">
+                <form id="game-over" class="border">
+                  <fieldset>
+                    <legend id="nameWinner"></legend>
+                  </fieldset>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="playAgain">Play Again</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
     </body>
 </html>

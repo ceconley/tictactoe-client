@@ -17,6 +17,7 @@ td {
   height: 200px;
   text-align: center;
   width: 200px;
+  cursor: pointer;
 }
 
 table {
@@ -45,4 +46,8 @@ table tr td:last-child {
   display: flex;
   justify-content: center;
   margin: 10px;
+}
+
+.reset {
+  cursor: pointer;
 }
