@@ -2,21 +2,18 @@
 // const config = require('../config.js')
 const store = require('../store.js')
 
-const baseUrl = 'http://tic-tac-toe.wdibos.com'
+const baseUrl = 'https://tic-tac-toe-wdi.herokuapp.com'
 
-// const signUp = data => {
-//   return $.ajax({
-//     url: cbaseUrl + '/sign-up',
-//     method: 'POST',
-//     data:  "credentials": {
-//     "email": "an@example.email",
-//     "password": "an example password",
-//     "password_confirmation": "an example password"
-//   }
-// }
-//   })
+const signUp = data => {
+  return $.ajax({
+    url: baseUrl + '/sign-up',
+    method: 'POST',
+    data
+  })
+}
 
 const signIn = data => {
+  console.log(data)
   return $.ajax({
     url: baseUrl + '/sign-in',
     method: 'POST',
@@ -47,7 +44,7 @@ const signOut = data => {
 }
 
 module.exports = {
-  // signUp,
+  signUp,
   signIn,
   changePassword,
   signOut

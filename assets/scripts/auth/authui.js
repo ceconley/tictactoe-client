@@ -1,20 +1,20 @@
 const store = require('../store.js')
 
-const signUpSuccess = data => {
+const signUpSuccess = function (data) {
   $('#message').text('Signed Up Successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('signUpSuccess ran. Data is : ', data)
 }
 
-const signUpFailure = error => {
+const signUpFailure = function (error) {
   $('#message').text('Signed Up Failed')
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('signUpFailure ran. Error is : ', error)
 }
 
-const signInSuccess = data => {
+const signInSuccess = function (data) {
   store.user = data.user
   $('#message').text('Signed In Successfully')
   $('#message').removeClass()
@@ -22,28 +22,28 @@ const signInSuccess = data => {
   console.log('signInSuccess ran. Data is : ', data)
 }
 
-const signInFailure = error => {
+const signInFailure = function (error) {
   $('#message').text('Signed In Failed')
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('signInFailure ran. Error is : ', error)
 }
 
-const changePasswordSuccess = data => {
+const changePasswordSuccess = function (data) {
   $('#message').text('Password changed successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('changePasswordSuccess ran. Data is :', data)
 }
 
-const changePasswordFailure = error => {
+const changePasswordFailure = function (error) {
   $('#message').text('Error on password change')
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('changePasswordFailure ran. Error is :', error)
 }
 
-const signOutSuccess = data => {
+const signOutSuccess = function (data) {
   $('#message').text('Signed Out Successfully')
   store.user = null
   $('#message').removeClass()
@@ -51,7 +51,7 @@ const signOutSuccess = data => {
   console.log('signOutSuccess ran. Data is : ', data)
 }
 
-const signOutFailure = error => {
+const signOutFailure = function (error) {
   $('#message').text('Signed Out Failed')
   $('#message').removeClass()
   $('#message').addClass('failure')
