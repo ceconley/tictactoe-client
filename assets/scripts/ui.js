@@ -5,6 +5,7 @@ let playerScore = [0, 0]
 let gameOver = false
 const players = ['X', 'O']
 let turn = players[0]
+$('.reset').hide()
 
 const toggleTurn = function () {
   if (turn === players[0]) {
@@ -31,10 +32,11 @@ const reset = function () {
   $('#8').html('')
   playerScore = [0, 0]
   gameOver = false
+  $('h5').html('Player X clicks to start')
+  turn = players[0]
 }
 
 // const boxSelected = (this)
-const handleSuccessResponse = function (event) {
 //   if (!gameOver) {
 //     if (boxSelected.hasClass('X') || boxSelected.hasClass('O')) {
 //       $('h5').text("Seat's Taken")
@@ -46,35 +48,43 @@ const handleSuccessResponse = function (event) {
 //       player = 2
 //     }
 //   }
+const handleSuccessResponse = function (event) {
   if (gameOver === false) {
-  //   if (boxSelected.hasClass('X') || boxSelected.hasClass('O')) {
-  //     $('h5').text("Seat's Taken")
-  //   } else if (turn === 'X') {
-  //     boxSelected.addClass('X')
-  //   } else {
-  //     boxSelected.addClass('O')
-
-    $('#' + event.target.id).html(turn)
-    if (turn === 'X') {
-      playerScore[0] += value[event.target.id]
-    } else {
-      playerScore[1] += value[event.target.id]
-    }
-    for (let i = 0; i < winScore.length; i++) {
-      if ((playerScore[0] & winScore[i]) === winScore[i]) {
-        $('h5').text(players[0] + ' Wins!')
-        gameOver = true
-        // $('#gameOver').modal()
-      } else if ((playerScore[1] & winScore[i]) === winScore[i]) {
-        $('h5').text(players[1] + ' Wins!')
-        gameOver = true
-        // $('#gameOver').modal()
+    if (event.target.innerHTML !== 'X' && event.target.innerHTML !== 'O') {
+      $('#' + event.target.id).html(turn)
+      if (turn === 'X') {
+        playerScore[0] += value[event.target.id]
+      } else {
+        playerScore[1] += value[event.target.id]
       }
+      for (let i = 0; i < winScore.length; i++) {
+        if ((playerScore[0] & winScore[i]) === winScore[i]) {
+          $('h5').text(players[0] + ' Wins!')
+          gameOver = true
+          // $('#gameOver').modal()
+        } else if ((playerScore[1] & winScore[i]) === winScore[i]) {
+          $('h5').text(players[1] + ' Wins!')
+          gameOver = true
+          // $('#gameOver').modal()
+        }
+      }
+    } else {
+      $('h5').text("Seat's Taken")
+      toggleTurn()
     }
   }
   if (!gameOver) {
     toggleTurn()
     $('h5').text(turn + " 's turn")
+  }
+  if (playerScore[0] + playerScore[1] === 511 && !gameOver) {
+    $('h5').text("Cat's Game")
+    gameOver = true
+  }
+  if (!gameOver) {
+    $('.reset').hide()
+  } else {
+    $('.reset').show()
   }
 }
 const handleFailureResponse = function (response) {

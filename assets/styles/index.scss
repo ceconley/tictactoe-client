@@ -12,18 +12,18 @@ h5 {
 
 td {
   border: 20px solid grey;
+  cursor: pointer;
   font-size: 50pt;
   font-weight: bold;
-  height: 200px;
+  height: 175px;
   text-align: center;
-  width: 200px;
-  cursor: pointer;
+  width: 175px;
 }
 
 table {
   margin: 0 auto;
   margin-top: 20px;
-  width: 600px;
+  width: 525px;
 }
 
 table tr:first-child td {
