@@ -39,4 +39,6 @@ $(() => {
   $('#7').on('click', events.onClick)
   $('#8').on('click', events.onClick)
   $('.reset').on('click', ui.reset)
+  $('#start-game').on('click', ui.startGame)
+  // $('#' + event.target.id).on('click', ui.startGame)
 })

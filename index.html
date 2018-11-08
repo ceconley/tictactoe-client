@@ -15,7 +15,7 @@
       <h1>Tic Tac Toe</h1>
       <div class="buttons">
         <button type="button" class="btn btn-primary" data-toggle="modal"
-        data-target="#modalSignin"> Sign In or Sign Up!</button>
+        data-target="#modalSignin" id="sign-in-up-button"> Sign In or Sign Up!</button>
 
         <div class="modal fade" id="modalSignin">
           <div class="modal-dialog">
@@ -44,6 +44,7 @@
                 </form>
               </div>
               <div class="modal-footer">
+                <p id="sign-in-success"></p>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
               </div>
             </div>
@@ -52,7 +53,7 @@
 
 
         <button type="button" class="btn btn-primary" data-toggle="modal"
-        data-target="#modalChangePassword">Change Password</button>
+        data-target="#modalChangePassword" id="change-password-button">Change Password</button>
 
         <div class="modal fade" id="modalChangePassword">
           <div class="modal-dialog">
@@ -72,6 +73,7 @@
                 </form>
               </div>
               <div class="modal-footer">
+                <p id="change-password-success"></p>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
               </div>
             </div>
@@ -79,7 +81,7 @@
         </div>
 
         <button type="button" class="btn btn-primary" data-toggle="modal"
-        data-target="#modalSignout">Sign Out</button>
+        data-target="#modalSignout" id="sign-out-button">Sign Out</button>
 
         <div class="modal fade" id="modalSignout">
           <div class="modal-dialog">
@@ -96,13 +98,14 @@
                 </form>
               </div>
               <div class="modal-footer">
+                <p id="sign-out-success"></p>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h5 id="message"> Player X clicks to start </h5>
+      <h5> Player X clicks to start </h5>
         <table>
           <tr>
             <td class="cells " id='0'></td>
