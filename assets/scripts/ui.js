@@ -1,7 +1,7 @@
 
 // base number of base 2
 const value = [1, 2, 4, 8, 16, 32, 64, 128, 256]
-// base 2 winning combinations
+// base 2 numbers winning combinations
 const winScore = [7, 56, 73, 84, 146, 273, 292, 448]
 let playerScore = [0, 0]
 let gameOver = false
@@ -16,6 +16,14 @@ const toggleTurn = function () {
     turn = players[0]
   }
 }
+
+// change reset button to  play-again button
+// when clicked:
+//  send call to api to post new game
+//  set board/logic conditions to start a new game
+
+// Patch game:
+//  different values will have to trigger different push's to the cells array
 
 // const newGame = function () {
 //   playerScore = [0, 0]
@@ -78,10 +86,10 @@ const handleSuccessResponse = function (event) {
     gameOver = true
   }
   // Hide reset button
-  if (!gameOver) {
-    $('.reset').hide()
-  } else {
+  if (gameOver) {
     $('.reset').show()
+  } else {
+    $('.reset').hide()
   }
 }
 const handleFailureResponse = function (response) {
