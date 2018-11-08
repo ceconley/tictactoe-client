@@ -6,6 +6,7 @@ $('#sign-out-button').hide()
 const signUpSuccess = function () {
   $('#sign-in-success').text('Signed Up Successfully')
   $('#sign-up')[0].reset()
+  $('#sign-in')[0].reset()
 }
 
 const signUpFailure = function () {
@@ -17,6 +18,7 @@ const signInSuccess = function (data) {
   store.user = data.user
   $('#sign-in-success').text('Signed In Successfully')
   $('#sign-in')[0].reset()
+  $('#sign-up')[0].reset()
   $('#sign-in-up-button').hide()
   $('#change-password-button').show()
   $('#sign-out-button').show()
