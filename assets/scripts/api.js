@@ -1,17 +1,18 @@
-const baseUrl = 'http://tic-tac-toe.wdibos.com'
-const store = require('../store.js')
+const baseUrl = 'https://tic-tac-toe-wdi.herokuapp.com'
+const store = require('./store.js')
 
-const newGametoApi = function () {
+const newGametoApi = function (data) {
   return $.ajax({
     url: baseUrl + '/games',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
+    },
+    data
   })
 }
 
-const send0ClickToApi = function (data) {
+const sendClickToApi = function (data) {
   return $.ajax({
     url: baseUrl + '/games:id',
     method: 'PATCH',
@@ -24,5 +25,5 @@ const send0ClickToApi = function (data) {
 
 module.exports = {
   newGametoApi,
-  send0ClickToApi
+  sendClickToApi
 }

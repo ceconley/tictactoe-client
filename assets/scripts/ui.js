@@ -7,7 +7,6 @@ let playerScore = [0, 0]
 let gameOver = false
 const players = ['X', 'O']
 let turn = players[0]
-$('.reset').hide()
 
 const toggleTurn = function () {
   if (turn === players[0]) {
@@ -16,6 +15,7 @@ const toggleTurn = function () {
     turn = players[0]
   }
 }
+$('#board').hide()
 
 // change reset button to  play-again button
 // when clicked:
@@ -44,9 +44,18 @@ const reset = function () {
   gameOver = false
   $('h5').html('Player X clicks to start')
   turn = players[0]
+  $('.reset').hide()
 }
 
-const handleSuccessResponse = function (event) {
+const startNewGame = function (event) {
+  reset()
+  $('#board').show()
+  // tied to play-again button
+  // reset board
+  // make post call to application
+}
+
+const playGame = function (event) {
   if (gameOver === false) {
     // place marker in square
     if (event.target.innerHTML !== 'X' && event.target.innerHTML !== 'O') {
@@ -92,12 +101,9 @@ const handleSuccessResponse = function (event) {
     $('.reset').hide()
   }
 }
-const handleFailureResponse = function (response) {
-  console.log(response)
-}
 
 module.exports = {
-  handleSuccessResponse,
-  handleFailureResponse,
-  reset
+  playGame,
+  reset,
+  startNewGame
 }

@@ -1,26 +1,22 @@
-// const api = require('./api')
+const api = require('./api')
 const ui = require('./ui')
 // const getFormFields = require('../../lib/get-form-fields.js')
 
-const onClick = function (event) {
+const onClick = function (event, data) {
   event.preventDefault()
-  // const data = getFormFields(event.target)
-  // const gamedata = {
-  //   game: {
-  //     cell: {
-  //       index: celldata.cell.index,
-  //       value: celldata.cell.value
-  //     }
-  //   }
-  //   console.log(data)
-  //   api.send0ClickToApi()
-  //   .then(ui.handleSuccessResponse)
-  //   .catch(ui.handleFailureResponse)
-  // }
-  ui.handleSuccessResponse(event)
-  // $(event.target).removeAttr('onClick')
+  api.sendClickToApi()
+  ui.playGame(event)
+  console.log(data)
+}
+
+const createGame = function (event, data) {
+  event.preventDefault()
+  ui.startNewGame()
+  api.newGametoApi()
+  console.log(data)
 }
 
 module.exports = {
-  onClick
+  onClick,
+  createGame
 }
