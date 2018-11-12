@@ -1,7 +1,9 @@
 const baseUrl = 'https://tic-tac-toe-wdi.herokuapp.com'
 const store = require('./store.js')
+// const ui = require('./ui.js')
 
 const newGametoApi = function (data) {
+  console.log(data)
   return $.ajax({
     url: baseUrl + '/games',
     method: 'POST',
@@ -19,7 +21,16 @@ const sendClickToApi = function (data) {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: {
+      'game': {
+        'cell': {
+          'index': 0,
+          'value': 'X'
+        },
+        'id': data.game,
+        'over': false
+      }
+    }
   })
 }
 

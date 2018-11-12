@@ -4,7 +4,7 @@ const store = require('../store.js')
 
 const baseUrl = 'https://tic-tac-toe-wdi.herokuapp.com'
 
-const signUp = data => {
+const signUp = function (data) {
   return $.ajax({
     url: baseUrl + '/sign-up',
     method: 'POST',
@@ -12,7 +12,7 @@ const signUp = data => {
   })
 }
 
-const signIn = data => {
+const signIn = function (data) {
   console.log(data)
   return $.ajax({
     url: baseUrl + '/sign-in',
@@ -21,7 +21,7 @@ const signIn = data => {
   })
 }
 
-const changePassword = data => {
+const changePassword = function (data) {
   return $.ajax({
     url: baseUrl + '/change-password',
     method: 'PATCH',
@@ -32,7 +32,7 @@ const changePassword = data => {
   })
 }
 
-const signOut = data => {
+const signOut = function (data) {
   return $.ajax({
     url: baseUrl + '/sign-out',
     method: 'DELETE',
