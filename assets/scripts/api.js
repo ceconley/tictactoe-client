@@ -14,21 +14,22 @@ const newGametoApi = function (data) {
   })
 }
 
-const sendClickToApi = function (data) {
+const sendMoveToApi = function (index, turn, gameOver) {
   return $.ajax({
-    url: baseUrl + '/games:id',
+    url: baseUrl + '/games/' + store.gameId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: {
+    // contentType: 'application/json',
+    data:
+    {
       'game': {
         'cell': {
-          'index': 0,
-          'value': 'X'
+          'index': index,
+          'value': turn
         },
-        'id': data.game,
-        'over': false
+        'over': gameOver
       }
     }
   })
@@ -36,5 +37,5 @@ const sendClickToApi = function (data) {
 
 module.exports = {
   newGametoApi,
-  sendClickToApi
+  sendMoveToApi
 }

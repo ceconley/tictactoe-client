@@ -14,6 +14,8 @@ const players = ['X', 'O']
 
 let turn = players[0]
 
+let index = 0
+
 const toggleTurn = function () {
   if (!gameOver) {
     if (turn === players[0]) {
@@ -27,7 +29,7 @@ const toggleTurn = function () {
 
 $('#board').hide()
 
-const reset = function () {
+const startNewGame = function () {
   $('#0').html('')
   $('#1').html('')
   $('#2').html('')
@@ -43,11 +45,6 @@ const reset = function () {
   turn = players[0]
   $('#start-game').hide()
   $('#board').show()
-}
-
-const startNewGame = function (event) {
-  reset()
-  ui.createSuccessResp()
 }
 
 const addToScore = function () {
@@ -91,6 +88,7 @@ const play = function (event) {
   if (gameOver === false) {
     if (event.target.innerHTML !== 'X' && event.target.innerHTML !== 'O') {
       $('#' + event.target.id).html(turn)
+      index = event.target
       addToScore()
       checkWin()
       checkTie()
@@ -100,21 +98,31 @@ const play = function (event) {
   }
 }
 
+// const gameData = {
+//   'game': {
+//     'cell': {
+//       'index': event.target.id,
+//       'value': turn
+//     },
+//     'over': gameOver
+//   }
+// }
+
 const createGame = function () {
   startNewGame()
   api.newGametoApi()
-    .then(ui.createSuccessResp)
-    .catch(ui.createFailResp)
+    .then(ui.onCreateSuccess)
+    .catch(ui.onCreateFail)
 }
 
-const onClick = function () {
+const onMove = function (event) {
   play(event)
-  // api.sendClickToApi()
-  //   .then(ui.clickSuccessResp)
-  //   .catch(ui.clickFailResp)
+  api.sendMoveToApi(index, turn, gameOver)
+    .then(ui.onMoveSuccess)
+    .catch(ui.onMoveFailure)
 }
 
 module.exports = {
-  onClick,
+  onMove,
   createGame
 }
