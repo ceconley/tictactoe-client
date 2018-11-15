@@ -14,7 +14,17 @@ const players = ['X', 'O']
 
 let turn = players[0]
 
-let index = 0
+let prevTurn = players[1]
+
+const togglePrevTurn = function () {
+  if (!gameOver) {
+    if (prevTurn === players[0]) {
+      prevTurn = players[1]
+    } else {
+      prevTurn = players[0]
+    }
+  }
+}
 
 const toggleTurn = function () {
   if (!gameOver) {
@@ -23,25 +33,17 @@ const toggleTurn = function () {
     } else {
       turn = players[0]
     }
-    $('h5').text(turn + " 's turn")
+    $('#message').text(turn + " 's turn")
   }
 }
 
 $('#board').hide()
 
 const startNewGame = function () {
-  $('#0').html('')
-  $('#1').html('')
-  $('#2').html('')
-  $('#3').html('')
-  $('#4').html('')
-  $('#5').html('')
-  $('#6').html('')
-  $('#7').html('')
-  $('#8').html('')
+  $('.cells').html('')
   playerScore = [0, 0]
   gameOver = false
-  $('h5').html('Player X clicks to start')
+  $('#message').html('Player X clicks to start')
   turn = players[0]
   $('#start-game').hide()
   $('#board').show()
@@ -59,11 +61,11 @@ const checkWin = function () {
   for (let i = 0; i < winScore.length; i++) {
     // check player score anded (in base 2) with any win value === win value
     if ((playerScore[0] & winScore[i]) === winScore[i]) {
-      $('h5').text(players[0] + ' Wins!')
+      $('#message').text(players[0] + ' Wins!')
       gameOver = true
       // $('#gameOver').modal()
     } else if ((playerScore[1] & winScore[i]) === winScore[i]) {
-      $('h5').text(players[1] + ' Wins!')
+      $('#message').text(players[1] + ' Wins!')
       gameOver = true
     }
   }
@@ -71,7 +73,7 @@ const checkWin = function () {
 
 const checkTie = function () {
   if (playerScore[0] + playerScore[1] === 511 && !gameOver) {
-    $('h5').text("Cat's Game")
+    $('#message').text("Cat's Game")
     gameOver = true
   }
 }
@@ -88,41 +90,50 @@ const play = function (event) {
   if (gameOver === false) {
     if (event.target.innerHTML !== 'X' && event.target.innerHTML !== 'O') {
       $('#' + event.target.id).html(turn)
-      index = event.target
       addToScore()
       checkWin()
       checkTie()
       toggleTurn()
+      togglePrevTurn()
       hideStart()
     }
   }
 }
 
-// const gameData = {
-//   'game': {
-//     'cell': {
-//       'index': event.target.id,
-//       'value': turn
-//     },
-//     'over': gameOver
-//   }
-// }
-
 const createGame = function () {
   startNewGame()
-  api.newGametoApi()
+  api.newGameToApi()
     .then(ui.onCreateSuccess)
     .catch(ui.onCreateFail)
 }
 
 const onMove = function (event) {
   play(event)
-  api.sendMoveToApi(index, turn, gameOver)
+  const index = $(event.target).attr('id')
+  const value = prevTurn
+  const over = gameOver
+  const data = {
+    game: {
+      cell: {
+        index,
+        value
+      },
+      over
+    }
+  }
+  api.sendMoveToApi(data)
     .then(ui.onMoveSuccess)
     .catch(ui.onMoveFailure)
 }
 
+const getGames = function () {
+  api.getGamesFromApi
+    .then(ui.onGetSuccess)
+    .catch(ui.onGetFailure)
+}
+
 module.exports = {
   onMove,
-  createGame
+  createGame,
+  getGames
 }

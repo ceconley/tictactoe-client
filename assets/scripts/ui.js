@@ -2,27 +2,36 @@
 const store = require('./store.js')
 
 const onMoveSuccess = function () {
-  console.log('click successful')
+  // console.log('click successful')
 }
 
 const onMoveFailure = function () {
-  console.log('click failed')
+  $('#message').html('Move Failed')
 }
 
 const onCreateSuccess = function (data) {
-  console.log('create game successful')
+  // console.log('create game successful')
   store.gameId = data.game.id
-  console.log(store.game)
 }
 
 const onCreateFail = function (error) {
-  console.log('create game failed')
+  $('#message').html('Create Game Failed')
   console.log(error)
+}
+
+const onGetSuccess = function () {
+  console.log('sucessful get')
+}
+
+const onGetFailure = function () {
+  console.log('failed get')
 }
 
 module.exports = {
   onMoveSuccess,
   onMoveFailure,
   onCreateSuccess,
-  onCreateFail
+  onCreateFail,
+  onGetSuccess,
+  onGetFailure
 }

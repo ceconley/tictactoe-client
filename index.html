@@ -105,7 +105,23 @@
           </div>
         </div>
       </div>
-      <h5> Click Start to Play</h5>
+      <div class="modal fade" id="modalGetGames">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalGetGamesLabel">Game History</h5>
+            </div>
+            <div class="modal-body">
+            <div id="get-games"></div>
+            </div>
+            <div class="modal-footer">
+              <p id="get-games-success"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="get-games-close">CLOSE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h5 id="message"> Click Start to Play</h5>
       <div class="buttons">
         <button class="button" value="Start" id="start-game">Start</button>
       </div>
@@ -133,11 +149,6 @@
                 <h5 class="modal-title" id="modalGameOverLabel">Game Over</h5>
               </div>
               <div class="modal-body">
-                <form id="game-over" class="border">
-                  <fieldset>
-                    <legend id="nameWinner"></legend>
-                  </fieldset>
-                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" id="playAgain">Play Again</button>

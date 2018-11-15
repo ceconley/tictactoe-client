@@ -10,4 +10,5 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('.cells').on('click', events.onMove)
   $('#start-game').on('click', events.createGame)
+  $('#get-games').on('click', events.getGames)
 })

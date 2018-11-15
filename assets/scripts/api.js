@@ -2,8 +2,7 @@ const baseUrl = 'https://tic-tac-toe-wdi.herokuapp.com'
 const store = require('./store.js')
 // const ui = require('./ui.js')
 
-const newGametoApi = function (data) {
-  console.log(data)
+const newGameToApi = function (data) {
   return $.ajax({
     url: baseUrl + '/games',
     method: 'POST',
@@ -14,28 +13,29 @@ const newGametoApi = function (data) {
   })
 }
 
-const sendMoveToApi = function (index, turn, gameOver) {
+const sendMoveToApi = function (data) {
   return $.ajax({
     url: baseUrl + '/games/' + store.gameId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    // contentType: 'application/json',
-    data:
-    {
-      'game': {
-        'cell': {
-          'index': index,
-          'value': turn
-        },
-        'over': gameOver
-      }
+    data
+  })
+}
+
+const getGamesFromApi = function () {
+  return $.ajax({
+    url: baseUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
 
 module.exports = {
-  newGametoApi,
-  sendMoveToApi
+  newGameToApi,
+  sendMoveToApi,
+  getGamesFromApi
 }
