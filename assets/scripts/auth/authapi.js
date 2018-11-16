@@ -1,12 +1,10 @@
 
-// const config = require('../config.js')
+const config = require('./config')
 const store = require('../store.js')
-
-const baseUrl = 'https://tic-tac-toe-wdi.herokuapp.com'
 
 const signUp = function (data) {
   return $.ajax({
-    url: baseUrl + '/sign-up',
+    url: config.apiUrl + '/sign-up',
     method: 'POST',
     data
   })
@@ -15,7 +13,7 @@ const signUp = function (data) {
 const signIn = function (data) {
   console.log(data)
   return $.ajax({
-    url: baseUrl + '/sign-in',
+    url: config.apiUrl + '/sign-in',
     method: 'POST',
     data
   })
@@ -23,7 +21,7 @@ const signIn = function (data) {
 
 const changePassword = function (data) {
   return $.ajax({
-    url: baseUrl + '/change-password',
+    url: config.apiUrl + '/change-password',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -34,7 +32,7 @@ const changePassword = function (data) {
 
 const signOut = function (data) {
   return $.ajax({
-    url: baseUrl + '/sign-out',
+    url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
