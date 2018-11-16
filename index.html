@@ -45,7 +45,7 @@
               </div>
               <div class="modal-footer">
                 <p id="sign-in-success"></p>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="sign-in-close">CLOSE</button>
+                <button type="button" class="btn btn-secondary close" data-dismiss="modal" id="sign-in-close">CLOSE</button>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@
               </div>
               <div class="modal-footer">
                 <p id="change-password-success"></p>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="change-password-close">CLOSE</button>
+                <button type="button" class="btn btn-secondary close" data-dismiss="modal" id="change-password-close">CLOSE</button>
               </div>
             </div>
           </div>
@@ -99,12 +99,16 @@
               </div>
               <div class="modal-footer">
                 <p id="sign-out-success"></p>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="sign-out-close">CLOSE</button>
+                <button type="button" class="btn btn-secondary close" data-dismiss="modal" id="sign-out-close">CLOSE</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <button type="button" class="btn btn-primary" data-toggle="modal"
+      data-target="#modalGetGames" id="get-games-button">Get Games</button>
+
       <div class="modal fade" id="modalGetGames">
         <div class="modal-dialog">
           <div class="modal-content">

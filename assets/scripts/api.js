@@ -1,10 +1,9 @@
-const baseUrl = 'https://tic-tac-toe-wdi.herokuapp.com'
+const config = require('./config')
 const store = require('./store.js')
-// const ui = require('./ui.js')
 
 const newGameToApi = function (data) {
   return $.ajax({
-    url: baseUrl + '/games',
+    url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -15,7 +14,7 @@ const newGameToApi = function (data) {
 
 const sendMoveToApi = function (data) {
   return $.ajax({
-    url: baseUrl + '/games/' + store.gameId,
+    url: config.apiUrl + '/games/' + store.gameId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -26,7 +25,7 @@ const sendMoveToApi = function (data) {
 
 const getGamesFromApi = function () {
   return $.ajax({
-    url: baseUrl + '/games',
+    url: config.apiUrl + '/games',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token

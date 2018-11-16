@@ -1,6 +1,5 @@
 const api = require('./api')
 const ui = require('./ui')
-// const getFormFields = require('../../lib/get-form-fields.js')
 
 const value = [1, 2, 4, 8, 16, 32, 64, 128, 256]
 // base 2 numbers winning combinations
@@ -127,7 +126,7 @@ const onMove = function (event) {
 }
 
 const getGames = function () {
-  api.getGamesFromApi
+  api.getGamesFromApi()
     .then(ui.onGetSuccess)
     .catch(ui.onGetFailure)
 }
@@ -135,5 +134,6 @@ const getGames = function () {
 module.exports = {
   onMove,
   createGame,
-  getGames
+  getGames,
+  startNewGame
 }
