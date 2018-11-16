@@ -1,5 +1,5 @@
 
-const config = require('./config')
+const config = require('../config')
 const store = require('../store.js')
 
 const signUp = function (data) {
