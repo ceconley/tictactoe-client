@@ -1,22 +1,22 @@
 
 const store = require('./store.js')
 
-const onMoveSuccess = function () {
+const onMoveSuccess = () => {
 }
 
-const onMoveFailure = function () {
+const onMoveFailure = () => {
   $('#message').html('Move Failed')
 }
 
-const onCreateSuccess = function (data) {
+const onCreateSuccess = (data) => {
   store.gameId = data.game.id
 }
 
-const onCreateFail = function () {
+const onCreateFail = () => {
   $('#message').html('Create Game Failed')
 }
 
-const onGetSuccess = function (response) {
+const onGetSuccess = (response) => {
   $('#get-games-success').html('')
   response.games.forEach(game => {
     const gameHTML = (`
@@ -27,7 +27,7 @@ const onGetSuccess = function (response) {
   })
 }
 
-const onGetFailure = function () {
+const onGetFailure = () => {
   $('#message').html('Game Request Failed')
 }
 

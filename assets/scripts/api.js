@@ -1,7 +1,7 @@
 const config = require('./config')
 const store = require('./store.js')
 
-const newGameToApi = function (data) {
+const newGameToApi = (data) => {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
@@ -12,7 +12,7 @@ const newGameToApi = function (data) {
   })
 }
 
-const sendMoveToApi = function (data) {
+const sendMoveToApi = (data) => {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.gameId,
     method: 'PATCH',
@@ -23,7 +23,7 @@ const sendMoveToApi = function (data) {
   })
 }
 
-const getGamesFromApi = function () {
+const getGamesFromApi = () => {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'GET',

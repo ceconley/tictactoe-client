@@ -51,8 +51,27 @@
           </div>
         </div>
 
-
         <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#modalGetGames" id="get-games-button">Get Games</button>
+
+        <div class="modal fade" id="modalGetGames">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalGetGamesLabel">Game History</h5>
+              </div>
+              <div class="modal-body">
+              <div id="get-games"></div>
+              </div>
+              <div class="modal-footer">
+                <p id="get-games-success"></p>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="get-games-close">CLOSE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-default" data-toggle="modal"
         data-target="#modalChangePassword" id="change-password-button">Change Password</button>
 
         <div class="modal fade" id="modalChangePassword">
@@ -80,20 +99,19 @@
           </div>
         </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal"
-        data-target="#modalSignout" id="sign-out-button">Sign Out</button>
+        <button class="btn btn-danger" id="sign-out-button">Sign Out</button>
 
-        <div class="modal fade" id="modalSignout">
+        <!-- <div class="modal fade" id="modalSignout">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <!-- <h5 class="modal-title" id="modalSignoutLabel">Sign Out</h5> -->
-              </div>
+                <h5 class="modal-title" id="modalSignoutLabel">Sign Out</h5> -->
+              <!-- </div>
               <div class="modal-body">
                 <form id="sign-out" class="border">
                   <fieldset>
-                    <!-- <legend>Sign Out</legend> -->
-                    <input type="submit" value="Sign Out!">
+                     <legend>Sign Out</legend>
+                   <input type="submit" value="Sign Out!">
                   </fieldset>
                 </form>
               </div>
@@ -103,30 +121,10 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <button type="button" class="btn btn-primary" data-toggle="modal"
-      data-target="#modalGetGames" id="get-games-button">Get Games</button>
-
-      <div class="modal fade" id="modalGetGames">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalGetGamesLabel">Game History</h5>
-            </div>
-            <div class="modal-body">
-            <div id="get-games"></div>
-            </div>
-            <div class="modal-footer">
-              <p id="get-games-success"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="get-games-close">CLOSE</button>
-            </div>
-          </div>
-        </div>
+        </div> -->
       </div>
       <h5 id="message"> Click Start to Play</h5>
-      <div class="buttons">
+      <div class="buttons" id='start-button-div'>
         <button class="button" value="Start" id="start-game">Start</button>
       </div>
       <table id="board">
@@ -146,19 +144,5 @@
           <td class="cells" id='8'></td>
         </tr>
       </table>
-        <!-- <div class="modal fade" id="gameOver">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalGameOverLabel">Game Over</h5>
-              </div>
-              <div class="modal-body">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="playAgain">Play Again</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
     </body>
 </html>

@@ -3,18 +3,18 @@ const store = require('../store.js')
 $('#change-password-button').hide()
 $('#sign-out-button').hide()
 
-const signUpSuccess = function () {
+const signUpSuccess = () => {
   $('#sign-in-success').html('Signed Up Successfully')
   $('#sign-up')[0].reset()
   $('#sign-in')[0].reset()
 }
 
-const signUpFailure = function () {
+const signUpFailure = () => {
   $('#sign-in-success').html('Signed Up Failed')
   $('#sign-up')[0].reset()
 }
 
-const signInSuccess = function (data) {
+const signInSuccess = (data) => {
   store.user = data.user
   $('#sign-in-success').html('Signed In Successfully')
   $('#sign-in')[0].reset()
@@ -22,32 +22,38 @@ const signInSuccess = function (data) {
   $('#sign-in-up-button').hide()
   $('#change-password-button').show()
   $('#sign-out-button').show()
+  $('#get-games-button').show()
+  $('#start-game').show()
+  $('#message').html('Click Start to Play')
 }
 
-const signInFailure = function () {
+const signInFailure = () => {
   $('#sign-in-success').html('Signed In Failed')
   $('#sign-in')[0].reset()
 }
 
-const changePasswordSuccess = function () {
+const changePasswordSuccess = () => {
   $('#change-password-success').html('Password changed successfully')
   $('#change-password')[0].reset()
 }
 
-const changePasswordFailure = function () {
+const changePasswordFailure = () => {
   $('#change-password-success').html('Error on password change')
   $('#change-password')[0].reset()
 }
 
-const signOutSuccess = function () {
-  $('#sign-out-success').html('Signed Out Successfully')
+const signOutSuccess = () => {
   store.user = null
   $('#sign-in-up-button').show()
   $('#change-password-button').hide()
   $('#sign-out-button').hide()
+  $('#get-games-button').hide()
+  $('#start-game').hide()
+  $('#board').hide()
+  $('#message').html('Please Sign In')
 }
 
-const signOutFailure = function () {
+const signOutFailure = () => {
   $('#sign-out-success').html('Signed Out Failed')
 }
 

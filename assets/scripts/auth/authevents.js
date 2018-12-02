@@ -1,15 +1,14 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const authApi = require('./authapi.js')
 const authUi = require('./authui.js')
-const events = require('../events')
 
-const closeModal = function () {
+const closeModal = () => {
   $('#sign-in-success').html('')
   $('#change-password-success').html('')
   $('#sign-out-success').html('')
 }
 
-const onSignUp = function (event) {
+const onSignUp = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   authApi.signUp(data)
@@ -17,7 +16,7 @@ const onSignUp = function (event) {
     .catch(authUi.signUpFailure)
 }
 
-const onSignIn = function (event) {
+const onSignIn = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   authApi.signIn(data)
@@ -25,7 +24,7 @@ const onSignIn = function (event) {
     .catch(authUi.signInFailure)
 }
 
-const onChangePassword = function (event) {
+const onChangePassword = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   authApi.changePassword(data)
@@ -33,12 +32,9 @@ const onChangePassword = function (event) {
     .catch(authUi.changePasswordFailure)
 }
 
-const onSignOut = function (event) {
+const onSignOut = (event) => {
   event.preventDefault()
-  const data = getFormFields(event.target)
-  events.startNewGame()
-  $('#start-game').show()
-  authApi.signOut(data)
+  authApi.signOut()
     .then(authUi.signOutSuccess)
     .catch(authUi.signOutFailure)
 }

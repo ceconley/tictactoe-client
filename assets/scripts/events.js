@@ -1,6 +1,11 @@
 const api = require('./api')
 const ui = require('./ui')
 
+$('#board').hide()
+$('#get-games-button').hide()
+$('#start-game').hide()
+$('#message').html('Please Sign In')
+
 const value = [1, 2, 4, 8, 16, 32, 64, 128, 256]
 // base 2 numbers winning combinations
 const winScore = [7, 56, 73, 84, 146, 273, 292, 448]
@@ -15,7 +20,7 @@ let turn = players[0]
 
 let prevTurn = players[1]
 
-const togglePrevTurn = function () {
+const togglePrevTurn = () => {
   if (!gameOver) {
     if (prevTurn === players[0]) {
       prevTurn = players[1]
@@ -25,7 +30,7 @@ const togglePrevTurn = function () {
   }
 }
 
-const toggleTurn = function () {
+const toggleTurn = () => {
   if (!gameOver) {
     if (turn === players[0]) {
       turn = players[1]
@@ -36,9 +41,7 @@ const toggleTurn = function () {
   }
 }
 
-$('#board').hide()
-
-const startNewGame = function () {
+const startNewGame = () => {
   $('.cells').html('')
   playerScore = [0, 0]
   gameOver = false
@@ -48,7 +51,7 @@ const startNewGame = function () {
   $('#board').show()
 }
 
-const addToScore = function () {
+const addToScore = () => {
   if (turn === 'X') {
     playerScore[0] += value[event.target.id]
   } else {
@@ -56,7 +59,7 @@ const addToScore = function () {
   }
 }
 
-const checkWin = function () {
+const checkWin = () => {
   for (let i = 0; i < winScore.length; i++) {
     // check player score anded (in base 2) with any win value === win value
     if ((playerScore[0] & winScore[i]) === winScore[i]) {
@@ -70,14 +73,14 @@ const checkWin = function () {
   }
 }
 
-const checkTie = function () {
+const checkTie = () => {
   if (playerScore[0] + playerScore[1] === 511 && !gameOver) {
     $('#message').text("Cat's Game")
     gameOver = true
   }
 }
 
-const hideStart = function () {
+const hideStart = () => {
   if (gameOver === false) {
     $('#start-game').hide()
   } else {
@@ -85,7 +88,7 @@ const hideStart = function () {
   }
 }
 
-const play = function (event) {
+const play = (event) => {
   if (gameOver === false) {
     if (event.target.innerHTML !== 'X' && event.target.innerHTML !== 'O') {
       $('#' + event.target.id).html(turn)
@@ -99,14 +102,14 @@ const play = function (event) {
   }
 }
 
-const createGame = function () {
+const createGame = () => {
   startNewGame()
   api.newGameToApi()
     .then(ui.onCreateSuccess)
     .catch(ui.onCreateFail)
 }
 
-const onMove = function (event) {
+const onMove = (event) => {
   play(event)
   const index = $(event.target).attr('id')
   const value = prevTurn
@@ -125,7 +128,7 @@ const onMove = function (event) {
     .catch(ui.onMoveFailure)
 }
 
-const getGames = function () {
+const getGames = () => {
   api.getGamesFromApi()
     .then(ui.onGetSuccess)
     .catch(ui.onGetFailure)

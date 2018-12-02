@@ -1,29 +1,35 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background: #696969;
+}
+
 h1 {
   font-size: 50pt;
   font-weight: bold;
   text-align: center;
+  color: #d3d3d3;
 }
 
 h5 {
   text-align: center;
+  margin-top: 10px;
 }
 
 td {
-  border: 20px solid grey;
+  border: 35px solid black;
   cursor: pointer;
   font-size: 50pt;
   font-weight: bold;
-  height: 175px;
+  height: 150px;
   text-align: center;
-  width: 175px;
+  width: 150px;
 }
 
 table {
   margin: 0 auto;
   margin-top: 20px;
-  width: 525px;
+  width: 450px;
 }
 
 table tr:first-child td {
@@ -45,5 +51,12 @@ table tr td:last-child {
 .buttons {
   display: flex;
   justify-content: center;
-  margin: 10px;
+}
+
+.btn {
+  margin: 20px;
+}
+
+#start-button-div {
+  height: 30px;
 }
