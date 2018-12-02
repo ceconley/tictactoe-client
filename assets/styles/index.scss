@@ -1,14 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background: #696969;
+  background-image: url(https://i.imgur.com/TUys3oj.jpg);
+  background-size: cover;
 }
 
 h1 {
   font-size: 50pt;
   font-weight: bold;
   text-align: center;
-  color: #d3d3d3;
 }
 
 h5 {
@@ -17,7 +17,7 @@ h5 {
 }
 
 td {
-  border: 35px solid black;
+  border: 35px solid #484848;
   cursor: pointer;
   font-size: 50pt;
   font-weight: bold;
@@ -59,4 +59,8 @@ table tr td:last-child {
 
 #start-button-div {
   height: 30px;
+}
+
+.modal-content {
+  background: grey;
 }

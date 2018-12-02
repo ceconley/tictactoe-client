@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic Tac Toe</h1>
+      <h1>Tic Tac Thrones</h1>
       <div class="buttons">
         <button type="button" class="btn btn-primary" data-toggle="modal"
         data-target="#modalSignin" id="sign-in-up-button"> Sign In or Sign Up!</button>
@@ -20,11 +20,8 @@
         <div class="modal fade" id="modalSignin">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalSigninLabel">Sign In/Sign Up</h5>
-              </div>
               <div class="modal-body">
-                <form id="sign-up" class="border">
+                <form id="sign-up">
                   <fieldset>
                     <legend>Sign Up</legend>
                     <input type="text" name="credentials[email]" placeholder="Email">
@@ -34,7 +31,7 @@
                   </fieldset>
                 </form>
 
-                <form id="sign-in" class="border">
+                <form id="sign-in">
                   <fieldset>
                     <legend>Sign In</legend>
                     <input type="text" name="credentials[email]" placeholder="Email">
@@ -55,7 +52,7 @@
         data-target="#modalGetGames" id="get-games-button">Get Games</button>
 
         <div class="modal fade" id="modalGetGames">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="modalGetGamesLabel">Game History</h5>
