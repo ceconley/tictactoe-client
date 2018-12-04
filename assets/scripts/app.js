@@ -12,4 +12,5 @@ $(() => {
   $('.cells').on('click', events.onMove)
   $('#start-game').on('click', events.createGame)
   $('#get-games-button').on('click', events.getGames)
+  $('.tokens').on('click', events.chooseToken)
 })

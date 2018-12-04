@@ -12,7 +12,9 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic Tac Thrones</h1>
+      <div id='headerDiv'>
+        <h1>Tic Tac Thrones</h1>
+      </div>
       <div class="buttons">
         <button type="button" class="btn btn-primary" data-toggle="modal"
         data-target="#modalSignin" id="sign-in-up-button"> Sign In or Sign Up!</button>
@@ -98,48 +100,37 @@
 
         <button class="btn btn-danger" id="sign-out-button">Sign Out</button>
 
-        <!-- <div class="modal fade" id="modalSignout">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalSignoutLabel">Sign Out</h5> -->
-              <!-- </div>
-              <div class="modal-body">
-                <form id="sign-out" class="border">
-                  <fieldset>
-                     <legend>Sign Out</legend>
-                   <input type="submit" value="Sign Out!">
-                  </fieldset>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <p id="sign-out-success"></p>
-                <button type="button" class="btn btn-secondary close" data-dismiss="modal" id="sign-out-close">CLOSE</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
-      <h5 id="message"> Click Start to Play</h5>
+      <div id='messageDiv'>
+        <h5 id="message"> Click Start to Play</h5>
+      </div>
       <div class="buttons" id='start-button-div'>
-        <button class="button" value="Start" id="start-game">Start</button>
+        <button class="btn btn-default" id="start-game">Start</button>
       </div>
-      <table id="board">
-        <tr>
-          <td class="cells" id='0'></td>
-          <td class="cells" id='1'></td>
-          <td class="cells" id='2'></td>
-        </tr>
-        <tr>
-          <td class="cells" id='3'></td>
-          <td class="cells" id='4'></td>
-          <td class="cells" id='5'></td>
-        </tr>
-        <tr>
-          <td class="cells" id='6'></td>
-          <td class="cells" id='7'></td>
-          <td class="cells" id='8'></td>
-        </tr>
-      </table>
+      <div class="container" id="game-board">
+        <div id="tokenDiv">
+          <img src="https://i.imgur.com/1aYWhx3.png" alt="House Targaryen" class="tokens" id="targaryen">
+          <img src="https://i.imgur.com/KOsYdIk.png" alt="House Lanister" class="tokens" id="lanister">
+          <img src="https://i.imgur.com/XBX6pRV.png" alt="House Baratheon" class="tokens" id="baratheon">
+          <img src="https://i.imgur.com/d70XlET.png" alt="House Stark" class="tokens" id="stark">
+        </div>
+            <table id="board">
+              <tr>
+                <td class="cells" id='0'></td>
+                <td class="cells" id='1'></td>
+                <td class="cells" id='2'></td>
+              </tr>
+              <tr>
+                <td class="cells" id='3'></td>
+                <td class="cells" id='4'></td>
+                <td class="cells" id='5'></td>
+              </tr>
+              <tr>
+                <td class="cells" id='6'></td>
+                <td class="cells" id='7'></td>
+                <td class="cells" id='8'></td>
+              </tr>
+            </table>
+        </div>
     </body>
 </html>

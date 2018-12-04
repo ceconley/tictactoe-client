@@ -14,11 +14,30 @@ let playerScore = [0, 0]
 
 let gameOver = false
 
-const players = ['X', 'O']
+const players = []
 
 let turn = players[0]
 
 let prevTurn = players[1]
+
+const finishedTokenChoice = () => {
+  if (players[0] !== null && players[1] !== null) {
+    $('#tokenDiv').hide()
+    $('#board').show()
+    $('#start-game').show()
+  }
+}
+
+const chooseToken = (event) => {
+  console.log(event.target)
+  $(event.target).hide()
+  if (players[0] === null) {
+    players[0] = event.target
+  } else {
+    players[1] = event.target
+  }
+  finishedTokenChoice()
+}
 
 const togglePrevTurn = () => {
   if (!gameOver) {
@@ -45,7 +64,7 @@ const startNewGame = () => {
   $('.cells').html('')
   playerScore = [0, 0]
   gameOver = false
-  $('#message').html('Player X clicks to start')
+  $('#message').html("Player 1's Turn")
   turn = players[0]
   $('#start-game').hide()
   $('#board').show()
@@ -138,5 +157,7 @@ module.exports = {
   onMove,
   createGame,
   getGames,
-  startNewGame
+  startNewGame,
+  chooseToken,
+  finishedTokenChoice
 }

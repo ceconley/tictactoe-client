@@ -23,8 +23,8 @@ const signInSuccess = (data) => {
   $('#change-password-button').show()
   $('#sign-out-button').show()
   $('#get-games-button').show()
-  $('#start-game').show()
-  $('#message').html('Click Start to Play')
+  // $('#start-game').show()
+  $('#message').html('Choose Tokens')
 }
 
 const signInFailure = () => {

@@ -1,8 +1,22 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background-image: url(https://i.imgur.com/TUys3oj.jpg);
+  background-image: url('https://i.imgur.com/TUys3oj.jpg');
   background-size: cover;
+}
+
+.btn {
+  margin: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.tokens {
+  height: 80px;
+  width: 80px;
 }
 
 h1 {
@@ -12,8 +26,18 @@ h1 {
 }
 
 h5 {
-  text-align: center;
   margin-top: 10px;
+  text-align: center;
+}
+
+.modal-content {
+  background: grey;
+}
+
+table {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 450px;
 }
 
 td {
@@ -24,12 +48,6 @@ td {
   height: 150px;
   text-align: center;
   width: 150px;
-}
-
-table {
-  margin: 0 auto;
-  margin-top: 20px;
-  width: 450px;
 }
 
 table tr:first-child td {
@@ -48,19 +66,6 @@ table tr td:last-child {
   border-right: 0;
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-}
-
-.btn {
-  margin: 20px;
-}
-
 #start-button-div {
-  height: 30px;
-}
-
-.modal-content {
-  background: grey;
+  height: 80px;
 }
