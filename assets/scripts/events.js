@@ -4,7 +4,9 @@ const ui = require('./ui')
 $('#board').hide()
 $('#get-games-button').hide()
 $('#start-game').hide()
+$('#choose-token-button').hide()
 $('#message').html('Please Sign In')
+// $('.tokens').hide()
 
 const value = [1, 2, 4, 8, 16, 32, 64, 128, 256]
 // base 2 numbers winning combinations
@@ -14,64 +16,114 @@ let playerScore = [0, 0]
 
 let gameOver = false
 
-const players = []
+const stark = document.createElement('img')
+stark.src = 'https://i.imgur.com/d70XlET.png'
+stark.height = 80
+stark.width = 80
+stark.id = 'Stark'
 
-let turn = players[0]
+const lanister = document.createElement('img')
+lanister.src = 'https://i.imgur.com/KOsYdIk.png'
+lanister.height = 80
+lanister.width = 80
+lanister.id = 'Lanister'
 
-let prevTurn = players[1]
+const targaryen = document.createElement('img')
+targaryen.src = 'https://i.imgur.com/1aYWhx3.png'
+targaryen.height = 80
+targaryen.width = 80
+targaryen.id = 'Targaryen'
 
-const finishedTokenChoice = () => {
-  if (players[0] !== null && players[1] !== null) {
-    $('#tokenDiv').hide()
-    $('#board').show()
-    $('#start-game').show()
-  }
-}
+const baratheon = document.createElement('img')
+baratheon.src = 'https://i.imgur.com/XBX6pRV.png'
+baratheon.height = 80
+baratheon.width = 80
+baratheon.id = 'Baratheon'
 
-const chooseToken = (event) => {
-  console.log(event.target)
+let player1 = null
+
+let player2 = null
+
+let currentPlayerImage = player1
+
+let prevPlayerImage = player2
+
+const selectStark = () => {
   $(event.target).hide()
-  if (players[0] === null) {
-    players[0] = event.target
+  if (player1 === null) {
+    player1 = stark
   } else {
-    players[1] = event.target
+    player2 = stark
   }
-  finishedTokenChoice()
 }
 
-const togglePrevTurn = () => {
+const selectBaratheon = () => {
+  $(event.target).hide()
+  if (player1 === null) {
+    player1 = baratheon
+  } else {
+    player2 = baratheon
+  }
+}
+
+const selectLanister = () => {
+  $(event.target).hide()
+  if (player1 === null) {
+    player1 = lanister
+  } else {
+    player2 = lanister
+  }
+}
+
+const selectTargaryen = () => {
+  $(event.target).hide()
+  if (player1 === null) {
+    player1 = targaryen
+  } else {
+    player2 = targaryen
+  }
+}
+
+const togglePrevPlayerImage = () => {
   if (!gameOver) {
-    if (prevTurn === players[0]) {
-      prevTurn = players[1]
+    if (prevPlayerImage === player1) {
+      prevPlayerImage = player2
     } else {
-      prevTurn = players[0]
+      prevPlayerImage = player1
     }
   }
 }
 
-const toggleTurn = () => {
+const togglePlayerImage = () => {
   if (!gameOver) {
-    if (turn === players[0]) {
-      turn = players[1]
+    if (currentPlayerImage === player1) {
+      currentPlayerImage = player2
     } else {
-      turn = players[0]
+      currentPlayerImage = player1
     }
-    $('#message').text(turn + " 's turn")
+    $('#message').html(currentPlayerImage.id + " 's Turn")
   }
+}
+
+const tokenModalClose = () => {
+  $('#message').html('Click Start to Play')
+  $('.tokens').show()
 }
 
 const startNewGame = () => {
+  console.log(player1)
+  console.log(player2)
   $('.cells').html('')
   playerScore = [0, 0]
   gameOver = false
-  $('#message').html("Player 1's Turn")
-  turn = players[0]
+  currentPlayerImage = player1
+  $('#message').html(currentPlayerImage.id + " 's Turn")
   $('#start-game').hide()
   $('#board').show()
 }
 
 const addToScore = () => {
-  if (turn === 'X') {
+  if (currentPlayerImage === player1) {
     playerScore[0] += value[event.target.id]
   } else {
     playerScore[1] += value[event.target.id]
@@ -82,11 +134,13 @@ const checkWin = () => {
   for (let i = 0; i < winScore.length; i++) {
     // check player score anded (in base 2) with any win value === win value
     if ((playerScore[0] & winScore[i]) === winScore[i]) {
-      $('#message').text(players[0] + ' Wins!')
+      $('#message').text(player1.id + ' Wins!')
+      $('#start-game').show()
       gameOver = true
       // $('#gameOver').modal()
     } else if ((playerScore[1] & winScore[i]) === winScore[i]) {
-      $('#message').text(players[1] + ' Wins!')
+      $('#message').text(player2.id + ' Wins!')
+      $('#start-game').show()
       gameOver = true
     }
   }
@@ -95,28 +149,20 @@ const checkWin = () => {
 const checkTie = () => {
   if (playerScore[0] + playerScore[1] === 511 && !gameOver) {
     $('#message').text("Cat's Game")
-    gameOver = true
-  }
-}
-
-const hideStart = () => {
-  if (gameOver === false) {
-    $('#start-game').hide()
-  } else {
     $('#start-game').show()
+    gameOver = true
   }
 }
 
 const play = (event) => {
   if (gameOver === false) {
-    if (event.target.innerHTML !== 'X' && event.target.innerHTML !== 'O') {
-      $('#' + event.target.id).html(turn)
+    if (event.target.innerHTML === '') {
+      $(event.target).append(currentPlayerImage.cloneNode())
       addToScore()
       checkWin()
       checkTie()
-      toggleTurn()
-      togglePrevTurn()
-      hideStart()
+      togglePlayerImage()
+      togglePrevPlayerImage()
     }
   }
 }
@@ -131,7 +177,7 @@ const createGame = () => {
 const onMove = (event) => {
   play(event)
   const index = $(event.target).attr('id')
-  const value = prevTurn
+  const value = prevPlayerImage
   const over = gameOver
   const data = {
     game: {
@@ -158,6 +204,10 @@ module.exports = {
   createGame,
   getGames,
   startNewGame,
-  chooseToken,
-  finishedTokenChoice
+  // chooseToken,
+  tokenModalClose,
+  selectTargaryen,
+  selectLanister,
+  selectBaratheon,
+  selectStark
 }

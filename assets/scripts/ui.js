@@ -1,7 +1,8 @@
 
 const store = require('./store.js')
 
-const onMoveSuccess = () => {
+const onMoveSuccess = (event) => {
+
 }
 
 const onMoveFailure = () => {
