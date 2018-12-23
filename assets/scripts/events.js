@@ -16,7 +16,7 @@ const closePlayerSelection = () => {
 }
 
 const addHouseBack = () => {
-  $('#lanister2').show()
+  $('#lannister2').show()
   $('#stark2').show()
   $('#targaryen2').show()
   $('#baratheon2').show()
@@ -56,24 +56,28 @@ const choosePlayer1 = (event) => {
   if (event.target.id === 'baratheon1') {
     player1.house = {
       name: 'House Baratheon',
+      houseMotto: 'Ours is the Fury',
       houseToken: event.target
     }
     $('#baratheon2').hide()
-  } else if (event.target.id === 'lanister1') {
+  } else if (event.target.id === 'lannister1') {
     player1.house = {
-      name: 'House Lanister',
+      name: 'House Lannister',
+      houseMotto: 'Hear Me Roar!',
       houseToken: event.target
     }
-    $('#lanister2').hide()
+    $('#lannister2').hide()
   } else if (event.target.id === 'targaryen1') {
     player1.house = {
       name: 'House Targaryen',
+      houseMotto: 'Fire and Blood',
       houseToken: event.target
     }
     $('#targaryen2').hide()
   } else if (event.target.id === 'stark1') {
     player1.house = {
       name: 'House Stark',
+      houseMotto: 'Winter is Coming',
       houseToken: event.target
     }
     $('#stark2').hide()
@@ -85,21 +89,25 @@ const choosePlayer2 = (event) => {
   if (event.target.id === 'baratheon2') {
     player2.house = {
       name: 'House Baratheon',
+      houseMotto: 'Ours is the Fury',
       houseToken: event.target
     }
-  } else if (event.target.id === 'lanister2') {
+  } else if (event.target.id === 'lannister2') {
     player2.house = {
-      name: 'House Lanister',
+      name: 'House Lannister',
+      houseMotto: 'Hear Me Roar!',
       houseToken: event.target
     }
   } else if (event.target.id === 'targaryen2') {
     player2.house = {
       name: 'House Targaryen',
+      houseMotto: 'Fire and Blood',
       houseToken: event.target
     }
   } else if (event.target.id === 'stark2') {
     player2.house = {
       name: 'House Stark',
+      houseMotto: 'Winter is Coming',
       houseToken: event.target
     }
   }
@@ -157,13 +165,13 @@ const checkWin = () => {
   for (let i = 0; i < winScore.length; i++) {
     // check player score anded (in base 2) with any win value === win value
     if ((player1.score & winScore[i]) === winScore[i]) {
-      $('#message').text(player1.house.name + ' Wins!')
+      $('#message').text(player1.house.houseMotto)
       $('#start-game').show()
       $('#players-button').show()
       addHouseBack()
       gameOver = true
     } else if ((player2.score & winScore[i]) === winScore[i]) {
-      $('#message').text(player2.house.name + ' Wins!')
+      $('#message').text(player2.house.houseMotto)
       $('#start-game').show()
       $('#players-button').show()
       addHouseBack()
@@ -174,7 +182,7 @@ const checkWin = () => {
 
 const checkTie = () => {
   if (player1.score + player2.score === 511 && !gameOver) {
-    $('#message').text("Cat's Game")
+    $('#message').text('The White Walkers Won')
     $('#start-game').show()
     $('#players-button').show()
     addHouseBack()
