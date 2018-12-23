@@ -6,7 +6,7 @@ const onMoveSuccess = (event) => {
 }
 
 const onMoveFailure = () => {
-  $('#message').html('Move Failed')
+  $('#message').text('Move Failed')
 }
 
 const onCreateSuccess = (data) => {
@@ -14,17 +14,31 @@ const onCreateSuccess = (data) => {
 }
 
 const onCreateFail = () => {
-  $('#message').html('Create Game Failed')
+  $('#message').text('Create Game Failed')
 }
 
 const onGetSuccess = (response) => {
-  $('#get-games-success').html('')
+  $('#get-games').text('')
   response.games.forEach(game => {
     const gameHTML = (`
-      <h6>ID: ${game.id}</h6>
-      <p>Board: ${game.cells}</p>
+      <table id="get-games-table">
+        <th>ID: ${game.id}</th>
+        <tr>
+          <td id="get-games-td">${game.cells[0]}</td>
+          <td id="get-games-td">${game.cells[1]}</td>
+          <td id="get-games-td">${game.cells[2]}</td>
+        </tr>
+          <td id="get-games-td">${game.cells[3]}</td>
+          <td id="get-games-td">${game.cells[4]}</td>
+          <td id="get-games-td">${game.cells[5]}</td>
+        <tr>
+          <td id="get-games-td">${game.cells[6]}</td>
+          <td id="get-games-td">${game.cells[7]}</td>
+          <td id="get-games-td">${game.cells[8]}</td>
+        </tr>
+      </table>
       `)
-    $('#get-games-success').append(gameHTML)
+    $('#get-games').append(gameHTML)
   })
 }
 

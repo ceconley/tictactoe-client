@@ -70,3 +70,21 @@ table tr td:last-child {
 #start-button-div {
   height: 80px;
 }
+
+#get-games-table {
+  margin: 20px;
+  width: 150px;
+}
+
+#get-games-td {
+  border: 5px solid #484848;
+  font-size: 20pt;
+  height: 50px;
+  text-align: center;
+  width: 50px;
+}
+
+#get-games {
+  display: flex;
+  flex-wrap: wrap;
+}
