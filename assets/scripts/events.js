@@ -1,155 +1,183 @@
 const api = require('./api')
 const ui = require('./ui')
 
+// beginning page state
 $('#board').hide()
 $('#get-games-button').hide()
 $('#start-game').hide()
-$('#choose-token-button').hide()
-$('#message').html('Please Sign In')
-// $('.tokens').hide()
+$('#players-button').hide()
+$('#message').text('Please Sign In')
 
+const closePlayerSelection = () => {
+  $('#get-games-button').show()
+  $('#start-game').show()
+  $('#players-button').show()
+  $('#message').text('Click Start to Play')
+}
+
+const addHouseBack = () => {
+  $('#lanister2').show()
+  $('#stark2').show()
+  $('#targaryen2').show()
+  $('#baratheon2').show()
+}
+// value of each square on board
 const value = [1, 2, 4, 8, 16, 32, 64, 128, 256]
+
 // base 2 numbers winning combinations
 const winScore = [7, 56, 73, 84, 146, 273, 292, 448]
 
-let playerScore = [0, 0]
-
+// game status on page load
+// let playerScore = [0, 0]
 let gameOver = false
 
-const stark = document.createElement('img')
-stark.src = 'https://i.imgur.com/d70XlET.png'
-stark.height = 80
-stark.width = 80
-stark.id = 'Stark'
+// players start unassigned to a token
+const player1 = {
+  house: {
+    name: null,
+    houseToken: null
+  },
+  score: 0,
+  apiToken: 'X'
+}
 
-const lanister = document.createElement('img')
-lanister.src = 'https://i.imgur.com/KOsYdIk.png'
-lanister.height = 80
-lanister.width = 80
-lanister.id = 'Lanister'
+const player2 = {
+  house: {
+    name: null,
+    houseToken: null
+  },
+  score: 0,
+  apiToken: 'O'
+}
 
-const targaryen = document.createElement('img')
-targaryen.src = 'https://i.imgur.com/1aYWhx3.png'
-targaryen.height = 80
-targaryen.width = 80
-targaryen.id = 'Targaryen'
-
-const baratheon = document.createElement('img')
-baratheon.src = 'https://i.imgur.com/XBX6pRV.png'
-baratheon.height = 80
-baratheon.width = 80
-baratheon.id = 'Baratheon'
-
-let player1 = null
-
-let player2 = null
-
-let currentPlayerImage = player1
-
-let prevPlayerImage = player2
-
-const selectStark = () => {
-  $(event.target).hide()
-  if (player1 === null) {
-    player1 = stark
-  } else {
-    player2 = stark
+// player token selection
+const choosePlayer1 = (event) => {
+  console.log(event.target)
+  if (event.target.id === 'baratheon1') {
+    player1.house = {
+      name: 'House Baratheon',
+      houseToken: event.target
+    }
+    $('#baratheon2').hide()
+  } else if (event.target.id === 'lanister1') {
+    player1.house = {
+      name: 'House Lanister',
+      houseToken: event.target
+    }
+    $('#lanister2').hide()
+  } else if (event.target.id === 'targaryen1') {
+    player1.house = {
+      name: 'House Targaryen',
+      houseToken: event.target
+    }
+    $('#targaryen2').hide()
+  } else if (event.target.id === 'stark1') {
+    player1.house = {
+      name: 'House Stark',
+      houseToken: event.target
+    }
+    $('#stark2').hide()
   }
 }
 
-const selectBaratheon = () => {
-  $(event.target).hide()
-  if (player1 === null) {
-    player1 = baratheon
-  } else {
-    player2 = baratheon
-  }
-}
-
-const selectLanister = () => {
-  $(event.target).hide()
-  if (player1 === null) {
-    player1 = lanister
-  } else {
-    player2 = lanister
-  }
-}
-
-const selectTargaryen = () => {
-  $(event.target).hide()
-  if (player1 === null) {
-    player1 = targaryen
-  } else {
-    player2 = targaryen
-  }
-}
-
-const togglePrevPlayerImage = () => {
-  if (!gameOver) {
-    if (prevPlayerImage === player1) {
-      prevPlayerImage = player2
-    } else {
-      prevPlayerImage = player1
+const choosePlayer2 = (event) => {
+  console.log(event.target)
+  if (event.target.id === 'baratheon2') {
+    player2.house = {
+      name: 'House Baratheon',
+      houseToken: event.target
+    }
+  } else if (event.target.id === 'lanister2') {
+    player2.house = {
+      name: 'House Lanister',
+      houseToken: event.target
+    }
+  } else if (event.target.id === 'targaryen2') {
+    player2.house = {
+      name: 'House Targaryen',
+      houseToken: event.target
+    }
+  } else if (event.target.id === 'stark2') {
+    player2.house = {
+      name: 'House Stark',
+      houseToken: event.target
     }
   }
 }
 
-const togglePlayerImage = () => {
+let currentPlayer = player1
+
+let prevPlayer = player2
+
+const togglePrevPlayer = () => {
   if (!gameOver) {
-    if (currentPlayerImage === player1) {
-      currentPlayerImage = player2
+    if (prevPlayer === player1) {
+      prevPlayer = player2
     } else {
-      currentPlayerImage = player1
+      prevPlayer = player1
     }
-    $('#message').html(currentPlayerImage.id + " 's Turn")
   }
 }
 
-const tokenModalClose = () => {
-  $('#message').html('Click Start to Play')
-  $('.tokens').show()
+const togglePlayer = () => {
+  if (!gameOver) {
+    if (currentPlayer === player1) {
+      currentPlayer = player2
+    } else {
+      currentPlayer = player1
+    }
+    $('#message').text(currentPlayer.house.name + " 's Turn")
+  }
 }
 
 const startNewGame = () => {
   console.log(player1)
   console.log(player2)
-  $('.cells').html('')
-  playerScore = [0, 0]
+  $('.cells').text('')
+  player1.score = 0
+  player2.score = 0
   gameOver = false
-  currentPlayerImage = player1
-  $('#message').html(currentPlayerImage.id + " 's Turn")
+  currentPlayer = player1
+  console.log(currentPlayer)
+  $('#message').text(currentPlayer.house.name + " 's Turn")
   $('#start-game').hide()
+  $('#players-button').hide()
   $('#board').show()
 }
 
 const addToScore = () => {
-  if (currentPlayerImage === player1) {
-    playerScore[0] += value[event.target.id]
+  if (currentPlayer === player1) {
+    player1.score += value[event.target.id]
   } else {
-    playerScore[1] += value[event.target.id]
+    player2.score += value[event.target.id]
   }
 }
 
 const checkWin = () => {
   for (let i = 0; i < winScore.length; i++) {
     // check player score anded (in base 2) with any win value === win value
-    if ((playerScore[0] & winScore[i]) === winScore[i]) {
-      $('#message').text(player1.id + ' Wins!')
+    if ((player1.score & winScore[i]) === winScore[i]) {
+      $('#message').text(player1.house.name + ' Wins!')
       $('#start-game').show()
+      $('#players-button').show()
+      addHouseBack()
       gameOver = true
-      // $('#gameOver').modal()
-    } else if ((playerScore[1] & winScore[i]) === winScore[i]) {
-      $('#message').text(player2.id + ' Wins!')
+    } else if ((player2.score & winScore[i]) === winScore[i]) {
+      $('#message').text(player2.house.name + ' Wins!')
       $('#start-game').show()
+      $('#players-button').show()
+      addHouseBack()
       gameOver = true
     }
   }
 }
 
 const checkTie = () => {
-  if (playerScore[0] + playerScore[1] === 511 && !gameOver) {
+  if (player1.score + player2.score === 511 && !gameOver) {
     $('#message').text("Cat's Game")
     $('#start-game').show()
+    $('#players-button').show()
+    addHouseBack()
     gameOver = true
   }
 }
@@ -157,16 +185,19 @@ const checkTie = () => {
 const play = (event) => {
   if (gameOver === false) {
     if (event.target.innerHTML === '') {
-      $(event.target).append(currentPlayerImage.cloneNode())
+      $(event.target).append(currentPlayer.house.houseToken.cloneNode())
       addToScore()
       checkWin()
       checkTie()
-      togglePlayerImage()
-      togglePrevPlayerImage()
+      togglePlayer()
+      togglePrevPlayer()
+      console.log(player1.score)
+      console.log(player2.score)
     }
   }
 }
 
+// post a new game to the api
 const createGame = () => {
   startNewGame()
   api.newGameToApi()
@@ -174,10 +205,11 @@ const createGame = () => {
     .catch(ui.onCreateFail)
 }
 
+// patch game on api for each move
 const onMove = (event) => {
   play(event)
   const index = $(event.target).attr('id')
-  const value = prevPlayerImage
+  const value = prevPlayer.apiToken
   const over = gameOver
   const data = {
     game: {
@@ -193,6 +225,7 @@ const onMove = (event) => {
     .catch(ui.onMoveFailure)
 }
 
+// get game history from api
 const getGames = () => {
   api.getGamesFromApi()
     .then(ui.onGetSuccess)
@@ -204,10 +237,7 @@ module.exports = {
   createGame,
   getGames,
   startNewGame,
-  // chooseToken,
-  tokenModalClose,
-  selectTargaryen,
-  selectLanister,
-  selectBaratheon,
-  selectStark
+  choosePlayer1,
+  choosePlayer2,
+  closePlayerSelection
 }

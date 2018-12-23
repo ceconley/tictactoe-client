@@ -14,7 +14,6 @@
     <body>
       <div id='headerDiv'>
         <a id="title"><img src="https://fontmeme.com/permalink/181207/90efa1ef49e87c52925a729706d1dd0f.png" alt="game-of-thrones-font" border="0" id="title"></a>
-        <!-- <h1>Tic Tac Thrones</h1> -->
       </div>
       <div class="buttons">
         <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -45,34 +44,58 @@
               </div>
               <div class="modal-footer">
                 <p id="sign-in-success"></p>
-                <button type="button" class="btn btn-secondary close" data-dismiss="modal" data-toggle="modal"
-                data-target="#modalChooseToken"id="sign-in-close">CLOSE</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+                data-target="#modalChoosePlayer1" id="sign-in-close">CLOSE</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="modal fade" id="modalChooseToken">
-          <div class="modal-dialog modal-lg">
+        <div class="modal fade" id="modalChoosePlayer1">
+          <div class="modal-dialog modal-sm">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="modalChooseTokenLabel">Choose House</h5>
+                <h5 class="modal-title" id="modalChoosePlayer1Label">Player 1 - Choose House</h5>
               </div>
               <div class="modal-body">
-                <img src="https://i.imgur.com/1aYWhx3.png" alt="House Targaryen" class="tokens" id="targaryen">
-                <img src="https://i.imgur.com/KOsYdIk.png" alt="House Lanister" class="tokens" id="lanister">
-                <img src="https://i.imgur.com/XBX6pRV.png" alt="House Baratheon" class="tokens" id="baratheon">
-                <img src="https://i.imgur.com/d70XlET.png" alt="House Stark" class="tokens" id="stark">
+                <img src="public/GOT-Targaryen-Token.png" alt="House Targaryen" class="tokens" id="targaryen1" data-dismiss="modal" data-toggle="modal"
+                data-target="#modalChoosePlayer2">
+                <img src="public/GOT-Lanister-Token.png" alt="House Lanister" class="tokens" id="lanister1" data-dismiss="modal" data-toggle="modal"
+                data-target="#modalChoosePlayer2">
+                <img src="public/GOT-Baratheon-Token.png" alt="House Baratheon" class="tokens" id="baratheon1" data-dismiss="modal" data-toggle="modal"
+                data-target="#modalChoosePlayer2">
+                <img src="public/GOT-Stark-Token.png" alt="House Stark" class="tokens" id="stark1" data-dismiss="modal" data-toggle="modal"
+                data-target="#modalChoosePlayer2">
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="choose-token-close">CLOSE</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
+                data-target="#modalChoosePlayer2" id="choose-player1-close">CLOSE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalChoosePlayer2">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalChoosePlayer2Label">Player 2 - Choose House</h5>
+              </div>
+              <div class="modal-body">
+                <img src="public/GOT-Targaryen-Token.png" alt="House Targaryen" class="tokens" id="targaryen2" data-dismiss="modal">
+                <img src="public/GOT-Lanister-Token.png" alt="House Lanister" class="tokens" id="lanister2" data-dismiss="modal">
+                <img src="public/GOT-Baratheon-Token.png" alt="House Baratheon" class="tokens" id="baratheon2" data-dismiss="modal">
+                <img src="public/GOT-Stark-Token.png" alt="House Stark" class="tokens" id="stark2" data-dismiss="modal">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="choose-player2-close">CLOSE</button>
               </div>
             </div>
           </div>
         </div>
 
         <button type="button" class="btn btn-default" data-toggle="modal"
-        data-target="#modalChooseToken" id="choose-token-button">Change House</button>
+        data-target="#modalChoosePlayer1" id="players-button">Choose New Houses</button>
 
         <button type="button" class="btn btn-default" data-toggle="modal"
         data-target="#modalGetGames" id="get-games-button">Get Games</button>
