@@ -23,9 +23,7 @@ const signInSuccess = (data) => {
   $('#change-password-button').show()
   $('#sign-out-button').show()
   $('#get-games-button').show()
-  $('#choose-token-button').show()
   $('#start-game').show()
-  // $('#message').html('Choose Tokens')
 }
 
 const signInFailure = () => {
@@ -51,7 +49,8 @@ const signOutSuccess = () => {
   $('#get-games-button').hide()
   $('#start-game').hide()
   $('#board').hide()
-  $('#message').html('Please Sign In')
+  $('#message').text('Please Sign In')
+  $('#players-button').hide()
 }
 
 const signOutFailure = () => {
