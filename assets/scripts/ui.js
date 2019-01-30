@@ -1,10 +1,6 @@
 
 const store = require('./store.js')
 
-const onMoveSuccess = (event) => {
-
-}
-
 const onMoveFailure = () => {
   $('#message').text('Move Failed')
 }
@@ -47,7 +43,6 @@ const onGetFailure = () => {
 }
 
 module.exports = {
-  onMoveSuccess,
   onMoveFailure,
   onCreateSuccess,
   onCreateFail,

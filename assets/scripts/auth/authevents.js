@@ -2,10 +2,9 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const authApi = require('./authapi.js')
 const authUi = require('./authui.js')
 
-const closeModal = () => {
-  $('#sign-in-success').html('')
-  $('#change-password-success').html('')
-  $('#sign-out-success').html('')
+const openModal = () => {
+  $('#sign-in-message').text('')
+  $('#change-password-message').text('')
 }
 
 const onSignUp = (event) => {
@@ -40,7 +39,7 @@ const onSignOut = (event) => {
 }
 
 module.exports = {
-  closeModal,
+  openModal,
   onSignUp,
   onSignIn,
   onChangePassword,

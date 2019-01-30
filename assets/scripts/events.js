@@ -52,7 +52,6 @@ const player2 = {
 
 // player token selection
 const choosePlayer1 = (event) => {
-  console.log(event.target)
   if (event.target.id === 'baratheon1') {
     player1.house = {
       name: 'House Baratheon',
@@ -60,6 +59,7 @@ const choosePlayer1 = (event) => {
       houseToken: event.target
     }
     $('#baratheon2').hide()
+    $('#modalChoosePlayer2').modal({backdrop: 'static', keyboard: false})
   } else if (event.target.id === 'lannister1') {
     player1.house = {
       name: 'House Lannister',
@@ -67,6 +67,7 @@ const choosePlayer1 = (event) => {
       houseToken: event.target
     }
     $('#lannister2').hide()
+    $('#modalChoosePlayer2').modal({backdrop: 'static', keyboard: false})
   } else if (event.target.id === 'targaryen1') {
     player1.house = {
       name: 'House Targaryen',
@@ -74,6 +75,7 @@ const choosePlayer1 = (event) => {
       houseToken: event.target
     }
     $('#targaryen2').hide()
+    $('#modalChoosePlayer2').modal({backdrop: 'static', keyboard: false})
   } else if (event.target.id === 'stark1') {
     player1.house = {
       name: 'House Stark',
@@ -81,11 +83,11 @@ const choosePlayer1 = (event) => {
       houseToken: event.target
     }
     $('#stark2').hide()
+    $('#modalChoosePlayer2').modal({backdrop: 'static', keyboard: false})
   }
 }
 
 const choosePlayer2 = (event) => {
-  console.log(event.target)
   if (event.target.id === 'baratheon2') {
     player2.house = {
       name: 'House Baratheon',
@@ -139,14 +141,11 @@ const togglePlayer = () => {
 }
 
 const startNewGame = () => {
-  console.log(player1)
-  console.log(player2)
   $('.cells').text('')
   player1.score = 0
   player2.score = 0
   gameOver = false
   currentPlayer = player1
-  console.log(currentPlayer)
   $('#message').text(currentPlayer.house.name + " 's Turn")
   $('#start-game').hide()
   $('#players-button').hide()
@@ -199,8 +198,6 @@ const play = (event) => {
       checkTie()
       togglePlayer()
       togglePrevPlayer()
-      console.log(player1.score)
-      console.log(player2.score)
     }
   }
 }

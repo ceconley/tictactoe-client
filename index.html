@@ -12,9 +12,10 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <div id='headerDiv'>
+      <!-- <div id="headerDiv">
         <a id="title"><img src="https://fontmeme.com/permalink/181207/90efa1ef49e87c52925a729706d1dd0f.png" alt="game-of-thrones-font" border="0" id="title"></a>
-      </div>
+      </div> -->
+      <h1 id="header">Tic Tac Thrones</h1>
       <div class="buttons">
         <button type="button" class="btn btn-primary" data-toggle="modal"
         data-target="#modalSignin" id="sign-in-up-button"> Sign In or Sign Up!</button>
@@ -41,11 +42,7 @@
                     <input type="submit" value="Sign In!">
                   </fieldset>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <p id="sign-in-success"></p>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
-                data-target="#modalChoosePlayer1" id="sign-in-close">CLOSE</button>
+                <p id="sign-in-message"></p>
               </div>
             </div>
           </div>
@@ -58,18 +55,10 @@
                 <h5 class="modal-title" id="modalChoosePlayer1Label">Player 1 - Choose House</h5>
               </div>
               <div class="modal-body">
-                <img src="public/GOT-Targaryen-Token.png" alt="House Targaryen" class="tokens" id="targaryen1" data-dismiss="modal" data-toggle="modal"
-                data-target="#modalChoosePlayer2">
-                <img src="public/GOT-Lannister-Token.png" alt="House Lannister" class="tokens" id="lannister1" data-dismiss="modal" data-toggle="modal"
-                data-target="#modalChoosePlayer2">
-                <img src="public/GOT-Baratheon-Token.png" alt="House Baratheon" class="tokens" id="baratheon1" data-dismiss="modal" data-toggle="modal"
-                data-target="#modalChoosePlayer2">
-                <img src="public/GOT-Stark-Token.png" alt="House Stark" class="tokens" id="stark1" data-dismiss="modal" data-toggle="modal"
-                data-target="#modalChoosePlayer2">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal"
-                data-target="#modalChoosePlayer2" id="choose-player1-close">CLOSE</button>
+                <img src="public/GOT-Targaryen-Token.png" alt="House Targaryen" class="tokens" id="targaryen1" data-dismiss="modal">
+                <img src="public/GOT-Lannister-Token.png" alt="House Lannister" class="tokens" id="lannister1" data-dismiss="modal">
+                <img src="public/GOT-Baratheon-Token.png" alt="House Baratheon" class="tokens" id="baratheon1" data-dismiss="modal">
+                <img src="public/GOT-Stark-Token.png" alt="House Stark" class="tokens" id="stark1" data-dismiss="modal">
               </div>
             </div>
           </div>
@@ -87,65 +76,62 @@
                 <img src="public/GOT-Baratheon-Token.png" alt="House Baratheon" class="tokens" id="baratheon2" data-dismiss="modal">
                 <img src="public/GOT-Stark-Token.png" alt="House Stark" class="tokens" id="stark2" data-dismiss="modal">
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="choose-player2-close">CLOSE</button>
-              </div>
             </div>
           </div>
         </div>
+        <div id="button-div">
+          <button type="button" class="btn btn-default" data-toggle="modal"
+          data-target="#modalChoosePlayer1" id="players-button">Choose New Houses</button>
 
-        <button type="button" class="btn btn-default" data-toggle="modal"
-        data-target="#modalChoosePlayer1" id="players-button">Choose New Houses</button>
+          <button type="button" class="btn btn-default" data-toggle="modal"
+          data-target="#modalGetGames" id="get-games-button">Get Games</button>
 
-        <button type="button" class="btn btn-default" data-toggle="modal"
-        data-target="#modalGetGames" id="get-games-button">Get Games</button>
-
-        <div class="modal fade" id="modalGetGames">
-          <div class="modal-dialog modal-lg" style="width:100%">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalGetGamesLabel">Game History</h5>
-              </div>
-              <div class="modal-body">
-              <div id="get-games"></div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="get-games-close">CLOSE</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button type="button" class="btn btn-default" data-toggle="modal"
-        data-target="#modalChangePassword" id="change-password-button">Change Password</button>
-
-        <div class="modal fade" id="modalChangePassword">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalChangePasswordLabel">Change Password</h5>
-              </div>
-              <div class="modal-body">
-                <form id="change-password" class="border">
-                  <fieldset>
-                    <legend>Change password!</legend>
-                    <input type="password" name="passwords[old]" placeholder="Old password">
-                    <input type="password" name="passwords[new]" placeholder="New password">
-                    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm New Password">
-                    <input type="submit" value="Change password!">
-                  </fieldset>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <p id="change-password-success"></p>
-                <button type="button" class="btn btn-secondary close" data-dismiss="modal" id="change-password-close">CLOSE</button>
+          <div class="modal fade" id="modalGetGames">
+            <div class="modal-dialog modal-lg" style="width:100%">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalGetGamesLabel">Game History</h5>
+                </div>
+                <div class="modal-body">
+                <div id="get-games"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="get-games-close">CLOSE</button>
+                </div>
               </div>
             </div>
           </div>
+
+          <button type="button" class="btn btn-default" data-toggle="modal"
+          data-target="#modalChangePassword" id="change-password-button">Change Password</button>
+
+          <div class="modal fade" id="modalChangePassword">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalChangePasswordLabel">Change Password</h5>
+                </div>
+                <div class="modal-body">
+                  <form id="change-password" class="border">
+                    <fieldset>
+                      <legend>Change password!</legend>
+                      <input type="password" name="passwords[old]" placeholder="Old password">
+                      <input type="password" name="passwords[new]" placeholder="New password">
+                      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm New Password">
+                      <input type="submit" value="Change password!">
+                    </fieldset>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <p id="change-password-message"></p>
+                  <button type="button" class="btn btn-secondary close" data-dismiss="modal" id="change-password-close">CLOSE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-default" id="sign-out-button">Sign Out</button>
         </div>
-
-        <button class="btn btn-default" id="sign-out-button">Sign Out</button>
-
       </div>
       <div id='messageDiv'>
         <h5 id="message"> Click Start to Play</h5>

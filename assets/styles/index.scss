@@ -3,6 +3,8 @@
 body {
   background-image: url('public/GOT-background.jpg');
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .btn {
@@ -20,10 +22,11 @@ body {
   margin: 10px;
 }
 
-#headerDiv {
-  display: flex;
-  justify-content: center;
+#header {
+  text-align: center;
   margin-top: 30px;
+  font-family: 'Game of Thrones';
+  font-size: 48pt;
 }
 
 h5 {
@@ -90,5 +93,132 @@ table tr td:last-child {
 }
 
 #message {
-  font-size: 36px;
+  font-size: 24px;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Game of Thrones';
+  src: url('public/Game of Thrones.ttf') format('truetype');
+}
+
+.element-with-custom-font {
+  font-family: 'Game of Thrones';
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    height: 100%;
+    width: 100%;
+  }
+
+  .btn {
+    margin: 15px;
+    font-size: 12pt;
+  }
+
+  .tokens {
+    height: 80px;
+    width: 80px;
+    margin: 7px;
+    text-align: center;
+  }
+
+  #header {
+    text-align: center;
+    margin-top: 25px;
+    font-family: 'Game of Thrones';
+    font-size: 42pt;
+  }
+
+  table {
+    margin: 0 auto;
+    margin: 20 0;
+    width: 450px;
+  }
+  
+  td {
+    border: 15px solid #484848;
+    cursor: pointer;
+    font-size: 50pt;
+    font-weight: bold;
+    height: 150px;
+    text-align: center;
+    width: 150px;
+  }
+
+  #message {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  #game-board {
+    border: 10px;
+  }
+
+  #start-button-div {
+    height: 70px;
+  }
+  
+}
+
+@media only screen and (max-width: 736px) {
+  body {
+    height: 100%;
+    width: 100%;
+  }
+
+  .btn {
+    size: 5rem;
+    margin: 5px;
+    font-size: 10pt;
+  }
+
+  .tokens {
+    height: 50px;
+    width: 50px;
+    margin: 0;
+  }
+
+  #header {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Game of Thrones';
+    font-size: 22pt;
+  }
+
+  table {
+    margin: 0 auto;
+    margin: 20 0;
+    width: 330px;
+  }
+  
+  td {
+    border: 9px solid #484848;
+    cursor: pointer;
+    font-size: 50pt;
+    font-weight: bold;
+    height: 110px;
+    text-align: center;
+    width: 110px;
+  }
+
+  #message {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  #game-board {
+    border: 10px;
+  }
+
+  #start-button-div {
+    height: 40px;
+  }
+
+  #button-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
