@@ -1,5 +1,7 @@
 # Tic Tac Thrones
 
+![Pic of App](https://github.com/ceconley/tictactoe-client/blob/master/public/TTT.png "App")
+
 
 ### Into
 
