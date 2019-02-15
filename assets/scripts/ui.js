@@ -13,6 +13,7 @@ const onCreateFail = () => {
   $('#message').text('Create Game Failed')
 }
 
+// SHOW GAME HISTORY
 const onGetSuccess = (response) => {
   $('#get-games').text('')
   response.games.forEach(game => {
