@@ -57,7 +57,8 @@ const choosePlayer1 = (event) => {
     player1.house = {
       name: 'House Baratheon',
       houseMotto: 'Ours is the Fury',
-      houseToken: event.target
+      houseToken: event.target,
+      audio: document.getElementById('baratheon-win')
     }
     $('#baratheon2').hide()
     $('#modalChoosePlayer2').modal({backdrop: 'static', keyboard: false})
@@ -65,7 +66,8 @@ const choosePlayer1 = (event) => {
     player1.house = {
       name: 'House Lannister',
       houseMotto: 'Hear Me Roar!',
-      houseToken: event.target
+      houseToken: event.target,
+      audio: document.getElementById('lannister-win')
     }
     $('#lannister2').hide()
     $('#modalChoosePlayer2').modal({backdrop: 'static', keyboard: false})
@@ -73,7 +75,8 @@ const choosePlayer1 = (event) => {
     player1.house = {
       name: 'House Targaryen',
       houseMotto: 'Fire and Blood',
-      houseToken: event.target
+      houseToken: event.target,
+      audio: document.getElementById('targaryen-win')
     }
     $('#targaryen2').hide()
     $('#modalChoosePlayer2').modal({backdrop: 'static', keyboard: false})
@@ -81,7 +84,8 @@ const choosePlayer1 = (event) => {
     player1.house = {
       name: 'House Stark',
       houseMotto: 'Winter is Coming',
-      houseToken: event.target
+      houseToken: event.target,
+      audio: document.getElementById('stark-win')
     }
     $('#stark2').hide()
     $('#modalChoosePlayer2').modal({backdrop: 'static', keyboard: false})
@@ -94,25 +98,29 @@ const choosePlayer2 = (event) => {
     player2.house = {
       name: 'House Baratheon',
       houseMotto: 'Ours is the Fury',
-      houseToken: event.target
+      houseToken: event.target,
+      audio: document.getElementById('baratheon-win')
     }
   } else if (event.target.id === 'lannister2') {
     player2.house = {
       name: 'House Lannister',
       houseMotto: 'Hear Me Roar!',
-      houseToken: event.target
+      houseToken: event.target,
+      audio: document.getElementById('lannister-win')
     }
   } else if (event.target.id === 'targaryen2') {
     player2.house = {
       name: 'House Targaryen',
       houseMotto: 'Fire and Blood',
-      houseToken: event.target
+      houseToken: event.target,
+      audio: document.getElementById('targaryen-win')
     }
   } else if (event.target.id === 'stark2') {
     player2.house = {
       name: 'House Stark',
       houseMotto: 'Winter is Coming',
-      houseToken: event.target
+      houseToken: event.target,
+      audio: document.getElementById('stark-win')
     }
   }
 }
@@ -173,6 +181,8 @@ const checkWin = () => {
     // check player score anded (in base 2) with any win value === win value
     if ((player1.score & winScore[i]) === winScore[i]) {
       $('#message').text(player1.house.houseMotto)
+      document.getElementById('theme').pause()
+      player1.house.audio.play()
       $('#start-game').show()
       $('#players-button').show()
       addHouseBack()
@@ -191,6 +201,7 @@ const checkWin = () => {
 const checkTie = () => {
   if (player1.score + player2.score === 511 && !gameOver) {
     $('#message').text('The White Walkers Won')
+    document.getElementById('cats-game').play()
     $('#start-game').show()
     $('#players-button').show()
     addHouseBack()

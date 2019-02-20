@@ -37,6 +37,7 @@ const signInSuccess = (data) => {
   $('#modalSignin').modal('hide')
   $('#modalChoosePlayer1').modal({backdrop: 'static', keyboard: false})
   $('#message').text('Click Start to Play')
+  document.getElementById('theme').play()
   modalClose()
 }
 
